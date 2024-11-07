@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 class Blog_main(models.Model):
     title = models.CharField(max_length=200)  # Title of the post
     content = models.TextField()  # Content of the post
-    author = models.ForeignKey(User, on_delete=models.CASCADE)  # Link to a user
+    author = models.CharField(max_length=200)  # type to a user
     created_date = models.DateTimeField(default=timezone.now)  # Auto-filled with current date/time
     updated_date = models.DateTimeField(auto_now=True)  # Updates with each save
 

@@ -1,4 +1,5 @@
-from django.shortcuts import render
+import markdown
+from django.shortcuts import render, get_object_or_404
 from .models import Blog_main
 
 # Create your views here.
@@ -11,3 +12,9 @@ def about_view(request):
 
 def contact_view(request):
     return render(request, 'contact.html')
+
+def post_detail(request, post_id):
+    post = get_object_or_404(Blog_main, id=post_id) # fetch post or return a 404 if not found
+    
+    post.content = markdown.markdown(post.content)  # Convert Markdown to HTML
+    return render(request, 'post_detail.html', {'post': post})

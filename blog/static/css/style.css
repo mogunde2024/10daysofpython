@@ -1,14 +1,14 @@
 /* blog/static/css/styles.css */
 body {
     font-family: Arial, sans-serif;
-    background-color: #f0f0f5;
+    background-color: #8888ef;
     color: #333;
     margin: 0;
     padding: 0;
 }
 
 header {
-    background-color: #333;
+    background-color: #efe6e6;
     color: #fff;
     padding: 1rem;
     text-align: center;
@@ -41,7 +41,7 @@ h1 {
     max-width: 800px;
     margin: auto;
     padding: 2rem;
-    background-color: #fff;
+    background-color: #e49e9e;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
@@ -53,5 +53,5 @@ h1 {
 }
 
 .post h2 {
-    color: #007acc;
+    color: #d8dfe3;
 }

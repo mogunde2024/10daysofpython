@@ -1,0 +1,28 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ post.title }}</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <header>
+        <h1 class="bg-light-blue">{{ post.title }}</h1>
+    </header>
+
+    <nav>
+        <a href="{% url 'home' %}">Home</a>
+        <a href="{% url 'blog-about' %}">About</a>
+        <a href="{% url 'blog-contact' %}">Contact</a>
+    </nav>
+
+    <div class = "container" >
+        <p><strong>Author:</strong> {{ post.author }}</p>
+        <p><strong>Published on:</strong> {{ post.created_date }}</p>
+        <hr>
+        <p>{{ post.content|safe }}</p>
+    </div>
+</body>
+</html>

@@ -1,0 +1,22 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirm Deletion</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <div class="delete-confirmation-container">
+        <h1>Are you sure you want to delete the post: "{{ post.title }}"?</h1>
+        <p>This action cannot be undone.</p>
+
+        <form method="POST">
+            {% csrf_token %}
+            <button type="submit" class="confirm-delete">Yes, Delete</button>
+            <a href="{% url 'post-detail' post.id %}" class="cancel-delete">Cancel</a>
+        </form>
+    </div>
+</body>
+</html>

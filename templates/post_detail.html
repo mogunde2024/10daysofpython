@@ -28,7 +28,7 @@
         <div class="post-content">
             {{ post.content|safe }}
         </div>
-        
+
         <a href="{% url 'home' %}" class="back-to-home">Back to Home</a>
 
         <!-- Delete Button -->
@@ -36,6 +36,26 @@
             {% csrf_token %}
             <button type="submit" class="delete-button">Delete Post</button>
         </form>
+
     </div>
+
+    <hr>
+<h2>Comments</h2>
+{% for comment in comments %}
+    <div>
+        <strong>{{ comment.name }}</strong> ({{ comment.created_at }}):
+        <p>{{ comment.content }}</p>
+    </div>
+    <hr>
+{% empty %}
+    <p>No comments yet. Be the first to comment!</p>
+{% endfor %}
+
+<h3>Leave a Comment</h3>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Submit Comment</button>
+</form>
 </body>
 </html>

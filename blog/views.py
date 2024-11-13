@@ -4,7 +4,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Blog_main
-from .forms import Blog_post_form
+from .forms import Blog_post_form, CommentForm
 
 # Create your views here.
 def home_view(request):
@@ -19,9 +19,18 @@ def contact_view(request):
 
 def post_detail(request, post_id):
     post = get_object_or_404(Blog_main, id=post_id) # fetch post or return a 404 if not found
-    
+    comments = post.comments.all()
+    if request.method == "POST":
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            comment = form.save(commit=False)
+            comment.post = post
+            comment.save()
+            return redirect('post-detail', post_id=post.id)
+    else:
+        form = CommentForm()
     post.content = markdown.markdown(post.content)  # Convert Markdown to HTML
-    return render(request, 'post_detail.html', {'post': post})
+    return render(request, 'post_detail.html', {'post': post, 'comments': comments, 'form': form})
 
 def login_user(request):
     if request.method == "POST":

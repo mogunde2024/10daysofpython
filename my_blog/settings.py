@@ -134,3 +134,8 @@ MEDIALFILES_DIRS = (
     BASE_DIR / 'media',
 )
 MEDIAL_ROOT = BASE_DIR / 'mediafiles'
+
+#directing loging url
+LOGIN_URL = '/accounts/login'
+LOGIN_REDIRECT_URL = '/'  # Redirect after login
+LOGOUT_REDIRECT_URL = '/'  # Redirect after logout

@@ -17,8 +17,8 @@ Including another URLconf
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
-from django.urls import path
-from blog.views import home_view, about_view, contact_view, post_detail, add_post, edit_post, post_delete
+from django.urls import path, include
+from blog.views import home_view, about_view, contact_view, post_detail, add_post, edit_post, post_delete, login_user
 urlpatterns = [
     path('', home_view, name='home'),
     path('contact/', contact_view, name='blog-contact'),
@@ -27,7 +27,10 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path('post/add', add_post, name='add-post'),
     path('post/<int:post_id>/delete/', post_delete, name='post-delete'),
-    path('post/<int:post_id>/edit', edit_post, name='edit-post')
+    path('post/<int:post_id>/edit', edit_post, name='edit-post'),
+    path('login/', login_user, name='login'),
+    
+    
 ]
 
 if settings.DEBUG:

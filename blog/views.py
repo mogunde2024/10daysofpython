@@ -1,4 +1,7 @@
 import markdown
+from django.urls import reverse
+from django.contrib.auth import authenticate, login, logout 
+from django.contrib import messages
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Blog_main
 from .forms import Blog_post_form
@@ -20,8 +23,32 @@ def post_detail(request, post_id):
     post.content = markdown.markdown(post.content)  # Convert Markdown to HTML
     return render(request, 'post_detail.html', {'post': post})
 
+def login_user(request):
+    if request.method == "POST":
+        username = request.POST["Username"]
+        password = request.POST["Password"]
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request, user)
+            # Redirect to a success page.
+            return redirect('home')
+        
+        else:
+            # Return an 'invalid login' error message.
+            messages.success(request, ("There was an erro loggin in, Try again!!!"))
+            return redirect(login)
+            
+        
+    else:
+        return render(request, 'registration/login.html', {})
+
+
+
 def add_post(request):
+    if not request.user.is_authenticated:
+        return redirect(f"{reverse('login')}?next={request.path}")
     if request.method == 'POST':
+        
         form = Blog_post_form(request.POST)
         if form.is_valid():
             form.save()
@@ -31,7 +58,10 @@ def add_post(request):
     
     return render(request, 'add_post.html', {'form': form})
 
+
 def edit_post(request, post_id):
+    if not request.user.is_authenticated:
+        return redirect(f"{reverse('login')}?next={request.path}")
     post = get_object_or_404(Blog_main, id=post_id)
     if request.method == 'POST':
         form = Blog_post_form(request.POST, instance=post)
@@ -42,7 +72,10 @@ def edit_post(request, post_id):
         form = Blog_post_form(instance=post)
     return render(request, 'edit_post.html', {'form': form, 'post': post})
 
+
 def post_delete(request, post_id):
+    if not request.user.is_authenticated:
+        return redirect(f"{reverse('login')}?next={request.path}")
     post = get_object_or_404(Blog_main, id=post_id)
     if request.method == 'POST':
         post.delete()

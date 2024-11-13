@@ -124,3 +124,90 @@ h1 {
 .cancel-delete:hover {
     text-decoration: underline;
 }
+
+/* Header Top Styling */
+.header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333;
+    color: #fff;
+    padding: 10px 20px;
+}
+
+.header-top h1 {
+    margin: 0;
+    font-size: 1.5em;
+}
+
+.auth-links {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.auth-links a {
+    color: #fff;
+    text-decoration: none;
+    padding: 5px 10px;
+    border: 1px solid #fff;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.auth-links a:hover {
+    background-color: #575757;
+}
+
+nav {
+    display: flex;
+    gap: 15px;
+    background-color: #444;
+    padding: 10px 20px;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+nav a:hover {
+    background-color: #575757;
+}
+
+/* Login and Logout Button Styling */
+.login-container, .logout-container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.login-container h2, .logout-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.login-container form, .logout-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.login-container button, .logout-container a {
+    padding: 10px;
+    border: none;
+    background-color: #0066cc;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.login-container button:hover, .logout-container a:hover {
+    background-color: #005bb5;
+}

@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Blog - Homepage</title>
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
     <header>
@@ -13,18 +13,21 @@
     </header>
 
     <nav>
-        <a href="{% url "home" %}">Home</a>
-        <a href="{% url "blog-about" %}">About</a>
-        <a href="{% url "blog-contact" %}">Contact</a>
-        <a href="{% url 'add-post' %}">Add New Post</a>
+        <ul>
+            <li><a class="active" href="{% url "home" %}">Home</a></li>
+            <li><a href="{% url "blog-about" %}">About</a></li>
+            <li><a href="{% url "blog-contact" %}">Contact</a></li>
+            <li><a href="{% url 'add-post' %}">Add New Post</a></li>
+        
 
 
         {% if user.is_authenticated %}
             
-            <a href="{% url 'login' %}">Logout</a>
+            <li><a href="{% url 'login' %}">Logout</a></li>
         {% else %}
-            <a href="{% url 'login' %}">Login</a>
+            <li><a href="{% url 'login' %}">Login</a></li>
         {% endif %}
+    </ul>
 
     </nav>
 

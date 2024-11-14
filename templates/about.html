@@ -5,16 +5,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About</title>
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
     <header>
         <h1>About Us</h1>
     </header>
     <nav>
-        <a href="/">Home</a>
-        <a href="/about">About</a>
-        <a href="/contact">Contact</a>
+        <ul>
+            <li><a href="{% url "home" %}">Home</a></li>
+            <li><a href="{% url "blog-about" %}">About</a></li>
+            <li><a href="{% url "blog-contact" %}">Contact</a></li>
+        </ul>
     </nav>
     <div class="container">
         <p>Welcome to the About page. Here you can learn more about our blog and its purpose.</p>

@@ -9,10 +9,11 @@
 </head>
 <body>
     <header>
-        <h1>It's All About Blogging</h1>
+        
     </header>
 
     <nav>
+        <label class="logo">It's All About Blogging</label>
         <ul>
             <li><a class="active" href="{% url "home" %}">Home</a></li>
             <li><a href="{% url "blog-about" %}">About</a></li>
@@ -54,5 +55,6 @@
             {% endfor %}
         {% endif %}
     </div>
+       
 </body>
 </html>
